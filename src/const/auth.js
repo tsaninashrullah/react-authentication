@@ -1,0 +1,3 @@
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_NOT_MATCH = 'LOGIN_NOT_MATCH';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
