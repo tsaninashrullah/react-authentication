@@ -44,12 +44,10 @@ class Login extends Component {
     }
 
     handleDismiss() {
-        console.log('here');
         this.setState({ show: false });
     }
 
     handleHideAlert() {
-        console.log("hide");
         this.setState({ show: false });
     }
 
@@ -67,46 +65,16 @@ class Login extends Component {
     }
 
     onSubmit(e){
-        var promise = new Promise(function(resolve, reject) {
-            // call resolve if the method succeeds
-            resolve(true);
-        })
-        promise.then(function details() {
-            fetch("http://minjem.in/api/v1/customer/login", {
-                method : "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body : JSON.stringify({
-                    email : this.state.value,
-                    password : this.state.password
-                })
+        // var promise = new Promise(function(resolve, reject) {
+        //     // call resolve if the method succeeds
+        //     resolve(true);
+        // })
+        // promise.then(function details() {
+            this.props.submitLogin(this.state.value, this.state.password);
+            this.setState({
+                show : true
             })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                this.setState({
-                    token : ((data.meta.code >= 200 && data.meta.code < 300) ? data.data.token : ""),
-                    profile : ((data.meta.code >= 200 && data.meta.code < 300) ? data.data.profile : {}),
-                    httpCode : data.meta.code,
-                    message : data.meta.message,
-                    show: true
-                })
-                this.props.submitLogin(this.state.token, this.state.profile, this.state.httpCode, this.state.message);
-            })
-            .catch(error => {
-                this.setState({
-                    token: "",
-                    profile : {},
-                    httpCode: 500,
-                    message: "",
-                    show: true
-                })
-                this.props.submitLogin(this.state.token, this.state.profile, this.state.httpCode, this.state.message);
-            })
-        }.bind(this))
+            // }.bind(this))
     }
 
     render() {

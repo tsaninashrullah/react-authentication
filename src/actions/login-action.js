@@ -1,14 +1,28 @@
 import * as type from "../const/auth";
 
-export const submitLogin = (token, profile, httpCode, message) => {
-    // here is the process
-    return {
-        type: ((httpCode >= 200 && httpCode <= 299) ? type.LOGIN_SUCCESS : ((httpCode >=400 && httpCode <=499) ? type.LOGIN_NOT_MATCH : type.LOGIN_ERROR)),
-        httpCode : httpCode,
-        message : message,
-        data: {
-            token : token,
-            profile : profile
-        }
-    };
+export const submitLogin = (email, password) => {
+    return async (dispatch) => {
+        const result = await fetch("http://minjem.in/api/v1/customer/login", {
+            method : "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body : JSON.stringify({
+                email : email,
+                password : password
+            })
+        });
+        const data = await result.json();
+        // here is the process
+        dispatch({
+            type: ((result.status >= 200 && result.status <= 299) ? type.LOGIN_SUCCESS : ((result.status >=400 && result.status <=499) ? type.LOGIN_NOT_MATCH : type.LOGIN_ERROR)),
+            httpCode : result.status,
+            message : ((typeof data.meta.message === "undefined") ? result.statusText : data.meta.message),
+            data: {
+                token : ((data.meta.code >= 200 && data.meta.code < 300) ? data.data.token : ""),
+                profile : ((data.meta.code >= 200 && data.meta.code < 300) ? data.data.profile : {})
+            }
+        })
+    }
 }
