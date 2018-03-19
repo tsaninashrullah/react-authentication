@@ -1,10 +1,10 @@
 import * as productConstant from "../const/product";
-import {HEADER_LOGIN} from "../const/general";
+import {HEADER_LOGIN, URL_API} from "../const/general";
 import HitApi from "../functions/api";
 
 export const getProduct = (page, limit, keyword) => {
     return async (dispatch) => {
-        const result = await HitApi("http://minjem.in/api/v1/product", "GET", "limit=" + limit + "&page=" + page + "&keyword=" + keyword, HEADER_LOGIN);
+        const result = await HitApi(URL_API + "/api/v1/product", "GET", "limit=" + limit + "&page=" + page + "&keyword=" + keyword, HEADER_LOGIN);
     
         const dataBody = result.jsonBody;
         let dispacthVar;

@@ -1,4 +1,5 @@
 import { Redirect } from "react-router-dom";
+import { URL_API } from "../const/general";
 import React from 'react';
 
 async function GetApi(url, params="", additionalHeaders = {}) {
@@ -55,7 +56,7 @@ async function ExecuteApi(url, method, params=null, headers = {}){
 }
 
 async function RefreshToken() {
-    let responseRefresh = await PostApi("http://minjem.in/api/v1/customer/refresh",{}, {
+    let responseRefresh = await PostApi(URL_API + "/api/v1/customer/refresh",{}, {
         "Authorization" : localStorage.getItem('token')
     });
 

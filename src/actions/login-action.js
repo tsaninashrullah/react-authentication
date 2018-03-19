@@ -1,8 +1,9 @@
 import * as type from "../const/auth";
+import { URL_API } from "../const/general";
 
 export const submitLogin = (email, password) => {
     return async (dispatch) => {
-        const result = await fetch("http://minjem.in/api/v1/customer/login", {
+        const result = await fetch(URL_API + "/api/v1/customer/login", {
             method : "POST",
             headers: {
                 'Accept': 'application/json',
