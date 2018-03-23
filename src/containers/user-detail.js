@@ -5,7 +5,7 @@ class UserDetail extends Component {
     render() {
         if (!this.props.user) {
             return (
-                <h2>Damn, Please select user</h2>
+                <h2>Hallo, Please select user</h2>
             )
         }
         

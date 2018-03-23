@@ -15,12 +15,12 @@ const Header = () => {
             { (!isLoggedIn()) ?
             <Nav pullRight>
                 <NavItem eventKey={1} href="/home">
-                    Daftar tawanan
+                    List User
                 </NavItem>
                 <NavItem eventKey={2} href="/login">
                     Login
                 </NavItem> 
-            </Nav>:
+            </Nav> :
             <Nav pullRight>
                 <NavItem eventKey={1} href="/product-management">
                     Manajemen produk
