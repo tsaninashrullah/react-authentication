@@ -3,7 +3,7 @@ import { URL_API } from "../const/general";
 
 export const submitLogin = (email, password) => {
     return async (dispatch) => {
-        const result = await fetch(URL_API + "/api/v1/customer/login", {
+        const result = await fetch(URL_API + "/5ae7ee5b2f00000f00f05b44", {
             method : "POST",
             headers: {
                 'Accept': 'application/json',

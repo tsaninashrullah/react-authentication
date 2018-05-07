@@ -15,7 +15,7 @@ const Header = () => {
             { (!isLoggedIn()) ?
             <Nav pullRight>
                 <NavItem eventKey={1} href="/home">
-                    List User
+                    Input Data
                 </NavItem>
                 <NavItem eventKey={2} href="/login">
                     Login
