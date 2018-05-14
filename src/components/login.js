@@ -76,6 +76,7 @@ class Login extends Component {
             })
             // }.bind(this))
     }
+    
 
     render() {
         if (typeof localStorage.token !== "undefined" && localStorage.token !== "") {

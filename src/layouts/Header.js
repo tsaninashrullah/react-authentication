@@ -17,9 +17,12 @@ const Header = () => {
                 <NavItem eventKey={1} href="/home">
                     Input Data
                 </NavItem>
-                <NavItem eventKey={2} href="/login">
-                    Login
+                <NavItem eventKey={2} href="/calendar">
+                    Calendar
                 </NavItem> 
+                <NavItem eventKey={3} href="/login">
+                    Login
+                </NavItem>
             </Nav> :
             <Nav pullRight>
                 <NavItem eventKey={1} href="/product-management">

@@ -5,8 +5,11 @@ import App from './App';
 import Home from './components/Home';
 import Login from './components/login';
 import Logout from './components/logout';
+import Calendar from './components/Calendar';
 import NoMatch from './components/404';
 import ProductIndex from './components/product-index';
+import Parent from './components/parent'
+import Child from './components/child'
 import registerServiceWorker from './registerServiceWorker';
 import { Redirect, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
@@ -26,16 +29,22 @@ const store = createStore(
     window.devToolsExtension && window.devToolsExtension(),
     applyMiddleware(thunk)
 );
-
+const style = [
+    { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.12/css/all.css' }
+]
 const RouterNav = () => (
     <Router>
         <Provider store={store}>
             <Switch>
-                <Master path='/home' middleware='general' component={Home}/>
-                <Master path='/logout' middleware='general' component={Logout}/>
-                <Master path='/login' middleware='guest' component={Login}/>
-                <Master path='/product-management' middleware='private' component={ProductIndex}/>
-                <Master path='/' exact middleware='general' component={App}/>
+                <Route path={'tes-bray'} component={Parent}>
+                    <Route path={'ganteng'} component={Child}/>
+                </Route>
+                <Master link={style} path='/home' middleware='general' component={Home}/>
+                <Master link={style} path='/logout' middleware='general' component={Logout}/>
+                <Master link={style} path='/login' middleware='guest' component={Login}/>
+                <Master link={style} path='/product-management' middleware='private' component={ProductIndex}/>
+                <Master link={style} path='/calendar' middleware='general' component={Calendar}/>
+                <Master link={style} path='/' exact middleware='general' component={App}/>
                 <Route component={NoMatch}/>
             </Switch>
         </Provider>

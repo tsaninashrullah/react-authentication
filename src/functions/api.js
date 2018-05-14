@@ -27,11 +27,9 @@ async function PostApi(url, params={}, additionalHeaders = {}) {
     const result = await fetch(url, {
         method : "POST",
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
             ...additionalHeaders
         },
-        body : JSON.stringify(params)
+        body : params
     });
 
     const jsonBody = await result.json();
